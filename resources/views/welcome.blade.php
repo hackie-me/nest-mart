@@ -1,1 +1,1 @@
-<x-app-layout></x-app-layout>
+<x-guest-layout></x-guest-layout>
