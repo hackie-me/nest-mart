@@ -2,7 +2,7 @@
 
 @section('content')
     <!--Start hero-->
-    <x-components.hero-section/>
+    <x-hero-section/>
     <!--End hero-->
     <!--Start banner-->
     <div class="container mb-30">
@@ -62,7 +62,7 @@
                             <!--Start product-grid-4-->
                             <div class="row product-grid-4">
                                 <!--Start single-product-->
-                                <x-components.cards.product-card/>
+                                <x-cards.product-card/>
                                 <!--End single-product-->
                             </div>
                             <!--End product-grid-4-->
@@ -81,7 +81,7 @@
                         </a>
                     </div>
                     <div class="row">
-                        <x-components.cards.d-o-d-card/>
+                        <x-cards.d-o-d-card/>
                     </div>
                 </section>
             </div>
@@ -89,12 +89,12 @@
             <!--Start Shop Sidebar-->
             <div class="col-lg-1-5 primary-sidebar sticky-sidebar pt-30">
                 <!-- Aside Category -->
-                <x-components.side.aside-category/>
+                <x-side.aside-category/>
                 <!-- Fillter By Price -->
-                <x-components.side.aside-filter/>
+                <x-side.aside-filter/>
 
                 {{--                <!-- Product sidebar Widget -->--}}
-                {{--                <x-components.side.aside-new-products/>--}}
+                {{--                <x-side.aside-new-products/>--}}
             </div>
             <!--End Shop Sidebar-->
         </div>
@@ -116,13 +116,13 @@
             </div>
             <div class="carausel-8-columns-cover position-relative">
                 <div class="carausel-8-columns" id="carausel-8-columns">
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
-                    <x-components.cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
+                    <x-cards.category-card/>
                 </div>
             </div>
         </div>
@@ -135,33 +135,33 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0">
                     <h4 class="section-title style-1 mb-30 animated animated">Top Selling</h4>
                     <div class="product-list-small animated animated">
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-md-0">
                     <h4 class="section-title style-1 mb-30 animated animated">Trending Products</h4>
                     <div class="product-list-small animated animated">
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block">
                     <h4 class="section-title style-1 mb-30 animated animated">Recently added</h4>
                     <div class="product-list-small animated animated">
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block">
                     <h4 class="section-title style-1 mb-30 animated animated">Top Rated</h4>
                     <div class="product-list-small animated animated">
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
-                        <x-components.cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
+                        <x-cards.product-card-horizontal/>
                     </div>
                 </div>
             </div>

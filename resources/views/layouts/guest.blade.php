@@ -26,22 +26,22 @@
         <span>Grand opening, <strong>up to 15%</strong> off all items. Only <strong>3 days</strong> left</span>
     </div>
     {{-- Top Bar --}}
-    <x-customs.navbar.top/>
+    <x-navbar.top/>
 
     {{-- Header--}}
-    <x-customs.navbar.header/>
+    <x-navbar.header/>
 
     {{-- Navigation--}}
-    <x-customs.navbar.menu/>
+    <x-navbar.menu/>
 </header>
 {{--Mobile menu--}}
-<x-customs.navbar.mobile-menu/>
+<x-navbar.mobile-menu/>
 <!--End header-->
 <main class="main">
     @yield('content')
 </main>
-<x-components.subscriber-card/>
-<x-components.footer-card/>
+<x-subscriber-card/>
+<x-footer-card/>
 <!-- Preloader Start -->
 <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
