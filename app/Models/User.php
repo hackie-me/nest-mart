@@ -3,21 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
     use Notifiable;
-    use TwoFactorAuthenticatable;
-
+    protected $table = 'users';
+    protected $primaryKey = 'id';
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +25,12 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'phone',
+        'avatar_url',
+        'is_admin',
+        'is_vendor',
+        'profile_photo_url',
         'email',
         'password',
     ];
@@ -36,9 +42,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
-        'two_factor_recovery_codes',
-        'two_factor_secret',
+        'remember_token'
     ];
 
     /**
@@ -48,6 +52,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
+        'is_vendor' => 'boolean',
     ];
 
     /**
@@ -58,4 +64,25 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function addresses() : HasMany
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function vendorDetails() : HasOne
+    {
+        return $this->hasOne(VendorDetails::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if($panel->getId() === 'admin') {
+            return $this->is_admin;
+        }
+        if($panel->getId() === 'vendor') {
+            return $this->is_vendor;
+        }
+        return false;
+    }
 }
