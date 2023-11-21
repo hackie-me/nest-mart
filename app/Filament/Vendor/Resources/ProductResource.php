@@ -24,62 +24,80 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->label('Thumbnail')
-                    ->directory('product/thumbnail')
-                    ->image()
-                    ->required(),
-                Forms\Components\FileUpload::make('gallery')
-                    ->directory('product/gallery')
-                    ->image()
-                    ->multiple()
-                    ->required(),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\Select::make('category_id')
-                    ->native(false)
-                    ->relationship('category', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('price')
-                    ->required()
-                    ->numeric()
-                    ->prefix('$'),
-                Forms\Components\TextInput::make('summary')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\RichEditor::make('description')
+                Forms\Components\Section::make('Image')
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Thumbnail')
+                            ->disk('public')
+                            ->directory('product/thumbnail')
+                            ->image()
+                            ->required(),
+                        Forms\Components\FileUpload::make('gallery')
+                            ->directory('product/gallery')
+                            ->disk('public')
+                            ->image()
+                            ->multiple()
+                            ->required(),
+                    ])->columns(2),
+                Forms\Components\Section::make('Product Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(191),
+                        Forms\Components\Select::make('category_id')
+                            ->native(false)
+                            ->relationship('category', 'name')
+                            ->required(),
+                        Forms\Components\TextInput::make('price')
+                            ->required()
+                            ->default(rand(100, 1000))
+                            ->numeric()
+                            ->prefix('$'),
+                        Forms\Components\TextInput::make('summary')
+                            ->required()
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('size_weight')
+                            ->required()
+                            ->default('N/A')
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('stock')
+                            ->required()
+                            ->default(rand(1, 100))
+                            ->numeric(),
+                        Forms\Components\TextInput::make('type')
+                            ->required()
+                            ->default('N/A')
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('sku')
+                            ->label('SKU')
+                            ->required()
+                            ->default(rand(100000, 999999))
+                            ->maxLength(191),
+                        Forms\Components\DatePicker::make('mfg')
+                            ->live()
+                            ->default(now())
+                            ->before('exp')
+                            ->required(),
+                        Forms\Components\DatePicker::make('exp')
+                            ->live()
+                            ->default(now())
+                            ->after('mfg')
+                            ->required(),
+                        Forms\Components\TagsInput::make('tags')
+                            ->splitKeys([',', ';',])
+                            ->required(),
+                        Forms\Components\Select::make('vendor_id')
+                            ->label('Select your Shop')
+                            ->native(false)
+                            ->options(function () {
+                                return VendorDetails::where('vendor_id', auth()->id())->pluck('name', 'id')->toArray();
+                            })
+                            ->relationship('vendor', 'name')
+                            ->required(),
+                    ])->columns(4),
+                Forms\Components\MarkdownEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('stock')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('sku')
-                    ->label('SKU')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\DatePicker::make('mfg')
-                    ->live()
-                    ->before('exp')
-                    ->required(),
-                Forms\Components\DatePicker::make('exp')
-                    ->live()
-                    ->after('mfg')
-                    ->required(),
-                Forms\Components\TagsInput::make('tags')
-                    ->splitKeys([',', ';',])
-                    ->required(),
-                Forms\Components\Select::make('vendor_id')
-                    ->label('Select your Shop')
-                    ->native(false)
-                    ->options(function () {
-                        return VendorDetails::where('vendor_id', auth()->id())->pluck('name', 'id')->toArray();
-                    })
-                    ->relationship('vendor', 'name')
-                    ->required(),
                 Forms\Components\Section::make('Additional Details')
                     ->relationship('additionalProductInfos')
                     ->schema([
