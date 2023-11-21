@@ -26,6 +26,20 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        // Create Default Admin user
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'username' => 'admin',
+            'phone' => '081234567890',
+            'email' => 'admin@mail.com',
+            'password' => bcrypt('admin'),
+            'is_admin' => true,
+            'is_vendor' => true,
+            'is_user' => true,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
     }
 
     /**
