@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('vendor_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vendor_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('address_id')->constrained('addresses')->cascadeOnDelete();
+            $table->foreignId('vendor_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('address_id')->nullable()->constrained('addresses')->cascadeOnDelete();
             $table->string('name');
             $table->string('summary')->default('N/A');
             $table->string('phone');

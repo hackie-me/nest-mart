@@ -35,9 +35,9 @@ class VendorDetails extends Model
         return $this->belongsTo(User::class, 'vendor_id');
     }
 
-    public function address() : HasOne
+    public function address() : BelongsTo
     {
-        return $this->hasOne(Address::class, 'user_id', 'vendor_id');
+        return $this->belongsTo(Address::class, 'address_id', 'id');
     }
 
 }

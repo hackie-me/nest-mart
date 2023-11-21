@@ -68,7 +68,7 @@ class VendorDetailsResource extends Resource
                 Forms\Components\Section::make('Shop Address')
                     ->relationship('address')
                     ->schema([
-                        Forms\Components\Hidden::make('user_id')
+                        Forms\Components\Hidden::make('vendor_id')
                             ->default(auth()->user()->id)
                             ->required(),
                         Forms\Components\TextInput::make('address_line_1')
