@@ -56,21 +56,15 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('profile_photo_url')
+                    ->label('Photo')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('username')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('profile_photo_url')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_admin')
-                    ->boolean(),
                 Tables\Columns\IconColumn::make('is_vendor')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
