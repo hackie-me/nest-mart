@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Product extends Model
 {
@@ -21,6 +22,7 @@ class Product extends Model
         'price',
         'summary',
         'description',
+        'size_weight',
         'stock',
         'type',
         'sku',
@@ -44,7 +46,7 @@ class Product extends Model
 
     public function vendor() : BelongsTo
     {
-        return $this->belongsTo(User::class, 'vendor_id');
+        return $this->belongsTo(VendorDetails::class, 'id', 'vendor_id');
     }
 
     public function sizeWeights() : HasMany
@@ -52,8 +54,8 @@ class Product extends Model
         return $this->hasMany(SizeWeight::class);
     }
 
-    public function additionalProductInfos() : HasMany
+    public function additionalProductInfos() : HasOne
     {
-        return $this->hasMany(AdditionalProductInfo::class);
+        return $this->hasOne(AdditionalProductInfo::class, 'product_id', 'id');
     }
 }

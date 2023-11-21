@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -11,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, FilamentUser
 {
     use HasApiTokens;
     use HasFactory;
@@ -30,6 +32,7 @@ class User extends Authenticatable
         'avatar_url',
         'is_admin',
         'is_vendor',
+        'is_user',
         'profile_photo_url',
         'email',
         'password',
@@ -54,6 +57,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_admin' => 'boolean',
         'is_vendor' => 'boolean',
+        'is_user' => 'boolean',
     ];
 
     /**
@@ -64,6 +68,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function getProfilePhotoUrlAttribute()
+    {
+        return $this->profile_photo_path !== null;
+    }
 
     public function addresses() : HasMany
     {
@@ -77,12 +85,6 @@ class User extends Authenticatable
 
     public function canAccessPanel(Panel $panel): bool
     {
-        if($panel->getId() === 'admin') {
-            return $this->is_admin;
-        }
-        if($panel->getId() === 'vendor') {
-            return $this->is_vendor;
-        }
-        return false;
+        return true;
     }
 }

@@ -20,11 +20,16 @@ class Address extends Model
         'zip_code',
         'country',
         'address_type',
-        'user_id',
+        'vendor_id',
     ];
 
     public function user() : BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function vendor() : BelongsTo
+    {
+        return $this->belongsTo(VendorDetails::class, 'vendor_id', 'user_id');
     }
 }

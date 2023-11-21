@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('country');
             $table->string('address_type');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('vendor_id')->nullable();
+            $table->foreign('vendor_id')->references('id')->on('vendor_details')->onDelete('cascade');
             $table->timestamps();
         });
     }

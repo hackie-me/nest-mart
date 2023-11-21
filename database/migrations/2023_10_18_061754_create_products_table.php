@@ -20,13 +20,15 @@ return new class extends Migration
             $table->float('price');
             $table->string('summary');
             $table->longText('description');
+            $table->longText('size_weight');
             $table->integer('stock');
             $table->string('type');
             $table->string('sku');
             $table->date('mfg');
             $table->date('exp');
             $table->json('tags');
-            $table->foreignId('vendor_id')->constrained('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('vendor_id')->nullable();
+            $table->foreign('vendor_id')->references('id')->on('vendor_details')->onDelete('cascade');
             $table->timestamps();
         });
     }

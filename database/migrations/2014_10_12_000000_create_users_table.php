@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('profile_photo_url', 2048)->nullable();
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_vendor')->default(false);
+            $table->boolean('is_user')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
