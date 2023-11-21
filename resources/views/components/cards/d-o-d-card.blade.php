@@ -8,9 +8,6 @@
             </div>
         </div>
         <div class="product-content-wrap">
-            <div class="deals-countdown-wrap">
-                <div class="deals-countdown" data-countdown="2026/04/25 00:00:00"></div>
-            </div>
             <div class="deals-content">
                 <h2><a href="#">Perdue Simply Smart Organics Gluten</a></h2>
                 <div class="product-rate-cover">

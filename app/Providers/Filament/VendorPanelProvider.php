@@ -19,27 +19,29 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Njxqlus\FilamentProgressbar\FilamentProgressbarPlugin;
 
-class AdminPanelProvider extends PanelProvider
+class VendorPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id('vendor')
+            ->path('panel/vendor')
             ->login()
+            ->registration()
+            ->emailVerification()
             ->profile()
             ->databaseNotifications()
             ->colors([
                 'primary' => Color::Emerald,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
-            ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->discoverResources(in: app_path('Filament/Vendor/Resources'), for: 'App\\Filament\\Vendor\\Resources')
+            ->discoverPages(in: app_path('Filament/Vendor/Pages'), for: 'App\\Filament\\Vendor\\Pages')
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-            ->widgets([ ])
+            ->discoverWidgets(in: app_path('Filament/Vendor/Widgets'), for: 'App\\Filament\\Vendor\\Widgets')
+            ->widgets([
+            ])
             ->plugins([
                 FilamentProgressbarPlugin::make()->color('#072541')
             ])
