@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Models\VendorDetails;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -35,16 +36,6 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(191),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('user')
-                    ->visibility('public')
-                    ->image(),
                 Forms\Components\Toggle::make('is_admin')
                     ->required(),
                 Forms\Components\Toggle::make('is_vendor')
@@ -56,8 +47,9 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('profile_photo_url')
+                Tables\Columns\ImageColumn::make('profile_photo_url')
                     ->label('Photo')
+                    ->disk('public')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
