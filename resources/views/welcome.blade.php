@@ -18,59 +18,52 @@
                                         aria-selected="true">All
                                 </button>
                             </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two"
-                                        type="button" role="tab" aria-controls="tab-two" aria-selected="false">Milks &
-                                    Dairies
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab"
-                                        data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three"
-                                        aria-selected="false">Coffes & Teas
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-four" data-bs-toggle="tab"
-                                        data-bs-target="#tab-four" type="button" role="tab" aria-controls="tab-four"
-                                        aria-selected="false">Pet Foods
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-five" data-bs-toggle="tab"
-                                        data-bs-target="#tab-five" type="button" role="tab" aria-controls="tab-five"
-                                        aria-selected="false">Meats
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-six" data-bs-toggle="tab" data-bs-target="#tab-six"
-                                        type="button" role="tab" aria-controls="tab-six" aria-selected="false">
-                                    Vegetables
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="nav-tab-seven" data-bs-toggle="tab"
-                                        data-bs-target="#tab-seven" type="button" role="tab" aria-controls="tab-seven"
-                                        aria-selected="false">Fruits
-                                </button>
-                            </li>
+                            @forelse($popularCategories as $index => $category)
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="nav-tab-{{ $index }}" data-bs-toggle="tab"
+                                            data-bs-target="#tab-{{ $index }}" type="button" role="tab"
+                                            aria-controls="tab-{{ $index }}" aria-selected="false">{{ $category->name }}
+                                    </button>
+                                </li>
+                            @empty
+                                {{-- Do Nothing --}}
+                            @endforelse
                         </ul>
                     </div>
                     <!--End nav-tabs-->
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
-                            <!--Start product-grid-4-->
+                            <!--Start product-grid-4 for All-->
                             <div class="row product-grid-4">
-                                <!--Start single-product-->
-                                <x-cards.product-card/>
-                                <!--End single-product-->
+                                @foreach($popularProducts as $product)
+                                    <!--Start single-product-->
+                                    <x-cards.product-card :product="$product"/>
+                                    <!--End single-product-->
+                                @endforeach
                             </div>
                             <!--End product-grid-4-->
                         </div>
-                        <!--En tab seven-->
+                        @forelse($popularCategories as $index => $category)
+                            <div class="tab-pane fade" id="tab-{{ $index }}" role="tabpanel" aria-labelledby="tab-{{ $index }}">
+                                <!--Start product-grid-4 for {{ $category->name }}-->
+                                <div class="row product-grid-4">
+                                    @forelse($category->products as $product)
+                                        <!--Start single-product-->
+                                        <x-cards.product-card :product="$product"/>
+                                        <!--End single-product-->
+                                    @empty
+                                            {{-- Do Nothing --}}
+                                    @endforelse
+                                </div>
+                                <!--End product-grid-4-->
+                            </div>
+                        @empty
+                            {{-- Do Nothing --}}
+                        @endforelse
                     </div>
                     <!--End tab-content-->
                 </section>
+
                 <!--Products Tabs-->
                 <section class="section-padding pb-5">
                     <div class="section-title">
@@ -89,12 +82,7 @@
             <!--Start Shop Sidebar-->
             <div class="col-lg-1-5 primary-sidebar sticky-sidebar pt-30">
                 <!-- Aside Category -->
-                <x-side.aside-category/>
-                <!-- Fillter By Price -->
-                <x-side.aside-filter/>
-
-                {{--                <!-- Product sidebar Widget -->--}}
-                {{--                <x-side.aside-new-products/>--}}
+                <x-side.aside-category :items="$categories"/>
             </div>
             <!--End Shop Sidebar-->
         </div>
@@ -116,13 +104,11 @@
             </div>
             <div class="carausel-8-columns-cover position-relative">
                 <div class="carausel-8-columns" id="carausel-8-columns">
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
-                    <x-cards.category-card/>
+                    @forelse($shopByCategory as $category)
+                        <x-cards.category-card :items="$category"/>
+                    @empty
+                        {{-- Do Nothing --}}
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -135,33 +121,41 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0">
                     <h4 class="section-title style-1 mb-30 animated animated">Top Selling</h4>
                     <div class="product-list-small animated animated">
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
+                        @forelse($topSellingProducts as $product)
+                            <x-cards.product-card-horizontal :product="$product"/>
+                        @empty
+                            {{-- Do Nothing --}}
+                        @endforelse
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-md-0">
                     <h4 class="section-title style-1 mb-30 animated animated">Trending Products</h4>
                     <div class="product-list-small animated animated">
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
+                        @forelse($trendingProducts as $product)
+                            <x-cards.product-card-horizontal :product="$product"/>
+                        @empty
+                            {{-- Do Nothing --}}
+                        @endforelse
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-lg-block">
                     <h4 class="section-title style-1 mb-30 animated animated">Recently added</h4>
                     <div class="product-list-small animated animated">
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
+                        @forelse($recentlyAdded as $product)
+                            <x-cards.product-card-horizontal :product="$product"/>
+                        @empty
+                            {{-- Do Nothing --}}
+                        @endforelse
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block">
                     <h4 class="section-title style-1 mb-30 animated animated">Top Rated</h4>
                     <div class="product-list-small animated animated">
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
-                        <x-cards.product-card-horizontal/>
+                        @forelse($topRated as $product)
+                            <x-cards.product-card-horizontal :product="$product"/>
+                        @empty
+                            {{-- Do Nothing --}}
+                        @endforelse
                     </div>
                 </div>
             </div>

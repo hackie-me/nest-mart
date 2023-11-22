@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header-wrap header-space-between position-relative">
             <div class="logo logo-width-1 d-block d-lg-none">
-                <a href="#"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
             </div>
             <div class="header-nav d-none d-lg-flex">
                 <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
@@ -23,15 +23,12 @@
                             <li>
                                 <a href="{{route('blogs')}}">Blog</a>
                             </li>
-{{--                            <li>--}}
-{{--                                <a href="{{route('contact')}}">Contact</a>--}}
-{{--                            </li>--}}
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="hotline d-none d-lg-flex">
-                <img src="assets/imgs/theme/icons/icon-headphone.svg" alt="hotline" />
+                <img src="{{url('assets/imgs/theme/icons/icon-headphone.svg')}}" alt="hotline" />
                 <p>1900 - 888<span>24/7 Support Center</span></p>
             </div>
             <div class="header-action-icon-2 d-block d-lg-none">
@@ -45,20 +42,20 @@
                 <div class="header-action-2">
                     <div class="header-action-icon-2">
                         <a href="#">
-                            <img alt="Nest" src="assets/imgs/theme/icons/icon-heart.svg" />
+                            <img alt="Nest" src="{{url('assets/imgs/theme/icons/icon-heart.svg')}}" />
                             <span class="pro-count white">4</span>
                         </a>
                     </div>
                     <div class="header-action-icon-2">
-                        <a class="mini-cart-icon" href="shop-cart.html">
-                            <img alt="Nest" src="assets/imgs/theme/icons/icon-cart.svg" />
+                        <a class="mini-cart-icon" href="">
+                            <img alt="Nest" src="{{url('assets/imgs/theme/icons/icon-cart.svg')}}" />
                             <span class="pro-count white">2</span>
                         </a>
                         <div class="cart-dropdown-wrap cart-dropdown-hm2">
                             <ul>
                                 <li>
                                     <div class="shopping-cart-img">
-                                        <a href="#"><img alt="Nest" src="assets/imgs/shop/thumbnail-3.jpg" /></a>
+                                        <a href="#"><img alt="Nest" src="{{url('assets/imgs/shop/thumbnail-3.jpg')}}" /></a>
                                     </div>
                                     <div class="shopping-cart-title">
                                         <h4><a href="#">Plain Striola Shirts</a></h4>
@@ -70,7 +67,7 @@
                                 </li>
                                 <li>
                                     <div class="shopping-cart-img">
-                                        <a href="#"><img alt="Nest" src="assets/imgs/shop/thumbnail-4.jpg" /></a>
+                                        <a href="#"><img alt="Nest" src="{{url('assets/imgs/shop/thumbnail-4.jpg')}}" /></a>
                                     </div>
                                     <div class="shopping-cart-title">
                                         <h4><a href="#">Macbook Pro 2022</a></h4>

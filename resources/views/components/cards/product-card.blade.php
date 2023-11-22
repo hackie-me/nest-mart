@@ -2,15 +2,13 @@
     <div class="product-cart-wrap mb-30">
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
-                <a href="#">
-                    <img class="default-img" src="assets/imgs/shop/product-1-1.jpg" alt="" />
-                    <img class="hover-img" src="assets/imgs/shop/product-1-2.jpg" alt="" />
+                <a href="{{route('product', [$product->name])}}">
+                    <img class="default-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
+                    <img class="hover-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                 </a>
             </div>
             <div class="product-action-1">
-                <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                <a aria-label="Add To Wishlist" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
             </div>
             <div class="product-badges product-badges-position product-badges-mrg">
                 <span class="hot">Hot</span>
@@ -18,9 +16,9 @@
         </div>
         <div class="product-content-wrap">
             <div class="product-category">
-                <a href="#">Snack</a>
+                <a href="#">{{$product->category->name}}</a>
             </div>
-            <h2><a href="#">Seeds of Change Organic Quinoe</a></h2>
+            <h2><a href="{{route('product', [$product->name])}}">{{$product->name}}</a></h2>
             <div class="product-rate-cover">
                 <div class="product-rate d-inline-block">
                     <div class="product-rating" style="width: 90%"></div>
@@ -28,15 +26,15 @@
                 <span class="font-small ml-5 text-muted"> (4.0)</span>
             </div>
             <div>
-                <span class="font-small text-muted">By <a href="#">NestFood</a></span>
+                <span class="font-small text-muted">By <a href="{{route('vendor', [$product->vendor->name])}}">{{$product->vendor->name}}</a></span>
             </div>
             <div class="product-card-bottom">
                 <div class="product-price">
-                    <span>$28.85</span>
-                    <span class="old-price">$32.8</span>
+                    <span>${{$product->price}}</span>
+                    <span class="old-price">${{ $product->price + rand(0, 100) * ($product->price) / 100 }}</span>
                 </div>
                 <div class="add-cart">
-                    <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                    <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
                 </div>
             </div>
         </div>

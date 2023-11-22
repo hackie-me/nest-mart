@@ -11,9 +11,10 @@ class AsideCategory extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public mixed $categories;
+    public function __construct(mixed $items)
     {
-        //
+        $this->categories = $items;
     }
 
     /**
@@ -21,6 +22,9 @@ class AsideCategory extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.side.aside-category');
+        $data = [
+            'categories' => $this->categories,
+        ];
+        return view('components.side.aside-category')->with($data);
     }
 }

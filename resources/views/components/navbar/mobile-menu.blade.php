@@ -2,7 +2,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="#"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -24,134 +24,21 @@
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
                             <a href="#">Home</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Home 1</a></li>
-                                <li><a href="#">Home 2</a></li>
-                                <li><a href="#">Home 3</a></li>
-                                <li><a href="#">Home 4</a></li>
-                                <li><a href="#">Home 5</a></li>
-                                <li><a href="#">Home 6</a></li>
-                            </ul>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#">shop</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Shop Grid – Right Sidebar</a></li>
-                                <li><a href="#">Shop Grid – Left Sidebar</a></li>
-                                <li><a href="#">Shop List – Right Sidebar</a></li>
-                                <li><a href="#">Shop List – Left Sidebar</a></li>
-                                <li><a href="#">Shop - Wide</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Product – Right Sidebar</a></li>
-                                        <li><a href="#">Product – Left Sidebar</a></li>
-                                        <li><a href="#">Product – No sidebar</a></li>
-                                        <li><a href="#">Product – Vendor Infor</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Shop – Filter</a></li>
-                                <li><a href="#">Shop – Wishlist</a></li>
-                                <li><a href="#">Shop – Cart</a></li>
-                                <li><a href="#">Shop – Checkout</a></li>
-                                <li><a href="#">Shop – Compare</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Shop Invoice</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Shop Invoice 1</a></li>
-                                        <li><a href="#">Shop Invoice 2</a></li>
-                                        <li><a href="#">Shop Invoice 3</a></li>
-                                        <li><a href="#">Shop Invoice 4</a></li>
-                                        <li><a href="#">Shop Invoice 5</a></li>
-                                        <li><a href="#">Shop Invoice 6</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#">Vendors</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Vendors Grid</a></li>
-                                <li><a href="#">Vendors List</a></li>
-                                <li><a href="#">Vendor Details 01</a></li>
-                                <li><a href="#">Vendor Details 02</a></li>
-                                <li><a href="#">Vendor Dashboard</a></li>
-                                <li><a href="#">Vendor Guide</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Mega menu</a>
-                            <ul class="dropdown">
-                                <li class="menu-item-has-children">
-                                    <a href="#">Women's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Dresses</a></li>
-                                        <li><a href="#">Blouses & Shirts</a></li>
-                                        <li><a href="#">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="#">Women's Sets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Jackets</a></li>
-                                        <li><a href="#">Casual Faux Leather</a></li>
-                                        <li><a href="#">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Gaming Laptops</a></li>
-                                        <li><a href="#">Ultraslim Laptops</a></li>
-                                        <li><a href="#">Tablets</a></li>
-                                        <li><a href="#">Laptop Accessories</a></li>
-                                        <li><a href="#">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </li>
                         <li class="menu-item-has-children">
                             <a href="#">Blog</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Blog Category Grid</a></li>
-                                <li><a href="#">Blog Category List</a></li>
-                                <li><a href="#">Blog Category Big</a></li>
-                                <li><a href="#">Blog Category Wide</a></li>
-                                <li class="menu-item-has-children">
-                                    <a href="#">Single Product Layout</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Left Sidebar</a></li>
-                                        <li><a href="#">Right Sidebar</a></li>
-                                        <li><a href="#">No Sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">My Account</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Forgot password</a></li>
-                                <li><a href="#">Reset password</a></li>
-                                <li><a href="#">Purchase Guide</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Terms of Service</a></li>
-                                <li><a href="#">404 Page</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
             </div>
             <div class="mobile-header-info-wrap">
-                <div class="single-mobile-header-info">
-                    <a href="#"><i class="fi-rs-marker"></i> Our location </a>
-                </div>
                 <div class="single-mobile-header-info">
                     <a href="#"><i class="fi-rs-user"></i>Log In / Sign Up </a>
                 </div>
@@ -161,13 +48,13 @@
             </div>
             <div class="mobile-social-icon mb-50">
                 <h6 class="mb-15">Follow Us</h6>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt="" /></a>
-                <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt="" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-facebook-white.svg')}}" alt="" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-twitter-white.svg')}}" alt="" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-instagram-white.svg')}}" alt="" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-pinterest-white.svg')}}" alt="" /></a>
+                <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-youtube-white.svg')}}" alt="" /></a>
             </div>
-            <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by AliThemes.</div>
+            <div class="site-copyright">Copyright 2022 © Nest. All rights reserved. Powered by HkDevs.</div>
         </div>
     </div>
 </div>

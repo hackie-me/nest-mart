@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Cards;
 
+use App\Models\Product;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -11,9 +12,10 @@ class ProductCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public Product $product;
+    public function __construct(Product $product)
     {
-        //
+        $this->product = $product;
     }
 
     /**
@@ -21,6 +23,7 @@ class ProductCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cards.product-card');
+        $data = ['product' => $this->product];
+        return view('components.cards.product-card')->with($data);
     }
 }

@@ -5,7 +5,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 mb-md-4 mb-xl-0">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-1.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-1.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Best prices & offers</h3>
@@ -16,7 +16,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-2.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-2.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Free delivery</h3>
@@ -27,7 +27,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-3.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-3.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Great daily deal</h3>
@@ -38,7 +38,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-4.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-4.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Wide assortment</h3>
@@ -49,7 +49,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-5.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-5.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Easy returns</h3>
@@ -60,7 +60,7 @@
                 <div class="col-lg-1-5 col-md-4 col-12 col-sm-6 d-xl-none">
                     <div class="banner-left-icon d-flex align-items-center wow fadeIn animated">
                         <div class="banner-icon">
-                            <img src="assets/imgs/theme/icons/icon-6.svg" alt=""/>
+                            <img src="{{url('assets/imgs/theme/icons/icon-6.svg')}}" alt=""/>
                         </div>
                         <div class="banner-text">
                             <h3 class="icon-box-title">Safe delivery</h3>
@@ -77,20 +77,19 @@
                 <div class="col">
                     <div class="widget-about font-md mb-md-3 mb-lg-3 mb-xl-0">
                         <div class="logo mb-30">
-                            <a href="index.html" class="mb-15"><img src="assets/imgs/theme/logo.svg" alt="logo"/></a>
+                            <a href="#" class="mb-15"><img src="{{url('assets/imgs/theme/logo.svg')}}" alt="logo"/></a>
                             <p class="font-lg text-heading">Awesome grocery store website template</p>
                         </div>
                         <ul class="contact-infor">
-                            <li><img src="assets/imgs/theme/icons/icon-location.svg" alt=""/><strong>Address: </strong>
+                            <li><img src="{{url('assets/imgs/theme/icons/icon-location.svg')}}" alt=""/><strong>Address: </strong>
                                 <span>5171 W Campbell Ave undefined Kent, Utah 53127 United States</span></li>
-                            <li><img src="assets/imgs/theme/icons/icon-contact.svg" alt=""/><strong>Call
+                            <li><img src="{{url('assets/imgs/theme/icons/icon-contact.svg')}}" alt=""/><strong>Call
                                     Us:</strong><span>(+91) - 540-025-124553</span></li>
-                            <li><img src="assets/imgs/theme/icons/icon-email-2.svg"
-                                     alt=""/><strong>Email:</strong><span><a href="/cdn-cgi/l/email-protection"
-                                                                             class="__cf_email__"
-                                                                             data-cfemail="4437252821040a2137306a272b29">[email&#160;protected]</a></span>
+                            <li><img src="{{url('assets/imgs/theme/icons/icon-email-2.svg')}}"
+                                     alt=""/><strong>Email:</strong><span>
+                                    <a href="" class="__cf_email__">nest-mart@hkdevs.com</a></span>
                             </li>
-                            <li><img src="assets/imgs/theme/icons/icon-clock.svg" alt=""/><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span>
+                            <li><img src="{{url('assets/imgs/theme/icons/icon-clock.svg')}}" alt=""/><strong>Hours:</strong><span>10:00 - 18:00, Mon - Sat</span>
                             </li>
                         </ul>
                     </div>
@@ -157,18 +156,18 @@
             </div>
             <div class="col-xl-4 col-lg-6 text-center d-none d-xl-block">
                 <div class="hotline d-lg-inline-flex mr-30">
-                    <img src="assets/imgs/theme/icons/phone-call.svg" alt="hotline"/>
+                    <img src="{{url('assets/imgs/theme/icons/phone-call.svg')}}" alt="hotline"/>
                     <p>1900 - 6666<span>Working 8:00 - 22:00</span></p>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-6 col-md-6 text-end d-none d-md-block">
                 <div class="mobile-social-icon">
                     <h6>Follow Us</h6>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-facebook-white.svg" alt=""/></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-twitter-white.svg" alt=""/></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-instagram-white.svg" alt=""/></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-pinterest-white.svg" alt=""/></a>
-                    <a href="#"><img src="assets/imgs/theme/icons/icon-youtube-white.svg" alt=""/></a>
+                    <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-facebook-white.svg')}}" alt=""/></a>
+                    <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-twitter-white.svg')}}" alt=""/></a>
+                    <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-instagram-white.svg')}}" alt=""/></a>
+                    <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-pinterest-white.svg')}}" alt=""/></a>
+                    <a href="#"><img src="{{url('assets/imgs/theme/icons/icon-youtube-white.svg')}}" alt=""/></a>
                 </div>
                 <p class="font-sm">Up to 15% discount on your first subscribe</p>
             </div>

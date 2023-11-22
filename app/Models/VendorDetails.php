@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class VendorDetails extends Model
@@ -38,6 +39,11 @@ class VendorDetails extends Model
     public function address() : BelongsTo
     {
         return $this->belongsTo(Address::class, 'address_id', 'id');
+    }
+
+    public function products() : HasMany
+    {
+        return $this->hasMany(Product::class, 'vendor_id', 'vendor_id');
     }
 
 }

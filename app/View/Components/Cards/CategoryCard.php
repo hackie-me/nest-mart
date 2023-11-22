@@ -11,9 +11,10 @@ class CategoryCard extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public mixed $category;
+    public function __construct(mixed $items)
     {
-        //
+        $this->category = $items;
     }
 
     /**
@@ -21,6 +22,9 @@ class CategoryCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.cards.category-card');
+        $data = [
+            'category' => $this->category,
+        ];
+        return view('components.cards.category-card')->with($data);
     }
 }
