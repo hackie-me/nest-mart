@@ -46,7 +46,7 @@ class Product extends Model
 
     public function vendor() : BelongsTo
     {
-        return $this->belongsTo(VendorDetails::class, 'vendor_id', 'id');
+        return $this->belongsTo(VendorDetails::class, 'vendor_id', 'vendor_id');
     }
 
     public function sizeWeights() : HasMany

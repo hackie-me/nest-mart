@@ -90,9 +90,8 @@ class ProductResource extends Resource
                             ->label('Select your Shop')
                             ->native(false)
                             ->options(function () {
-                                return VendorDetails::where('vendor_id', auth()->id())->pluck('name', 'id')->toArray();
+                                return VendorDetails::where('vendor_id', auth()->id())->pluck('name', 'vendor_id')->toArray();
                             })
-                            ->relationship('vendor', 'name')
                             ->required(),
                     ])->columns(4),
                 Forms\Components\MarkdownEditor::make('description')
