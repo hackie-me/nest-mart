@@ -44,7 +44,7 @@
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="detail-info pr-30 pl-30">
                                     <span class="stock-status out-stock"> Sale Off </span>
-                                    <h2 class="title-detail"{{$product->name}}</h2>
+                                    <h2 class="title-detail">{{$product->name}}</h2>
                                     <div class="product-detail-rating">
                                         <div class="product-rate-cover text-end">
                                             <div class="product-rate d-inline-block">
@@ -210,7 +210,7 @@
                                             <img src="{{url('assets/imgs/vendor/vendor-18.svg')}}" alt="" />
                                             <div class="vendor-name ml-15">
                                                 <h6>
-                                                    <a href="">{{$product->vendor->name}}</a>
+                                                    <a href="{{route('vendor', [$product->vendor->id, $product->vendor->name])}}">{{$product->vendor->name}}</a>
                                                 </h6>
                                                 <div class="product-rate-cover text-end">
                                                     <div class="product-rate d-inline-block">
@@ -351,7 +351,7 @@
                                             <div class="product-cart-wrap hover-up">
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
-                                                        <a href="{{route('product', [$product->name])}}">
+                                                        <a href="{{route('product', [$product->id, $product->name])}}">
                                                             <img class="default-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                                                             <img class="hover-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                                                         </a>
@@ -365,7 +365,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content-wrap">
-                                                    <h2><a href="{{route('product', [$product->name])}}" tabindex="0">{{$product->name}}</a></h2>
+                                                    <h2><a href="{{route('product', [$product->id, $product->name])}}" tabindex="0">{{$product->name}}</a></h2>
                                                     <div class="rating-result" title="90%">
                                                         <span> </span>
                                                     </div>

@@ -33,15 +33,15 @@ Route::get('terms-and-conditions', [HomeController::class, 'viewTerms'])->name('
 
 Route::prefix('products')->group(function(){
     Route::get('/', [ProductController::class, 'viewList'])->name('products');
-    Route::get('/{title}', [ProductController::class, 'viewDetails'])->name('product');
+    Route::get('/{id}/{title}', [ProductController::class, 'viewDetails'])->name('product');
 });
 
 Route::prefix('vendor')->group(function(){
     Route::get('/', [VendorController::class, 'viewList'])->name('vendors');
-    Route::get('/{title}', [VendorController::class, 'viewDetails'])->name('vendor');
+    Route::get('/{id}/{title}', [VendorController::class, 'viewDetails'])->name('vendor');
 });
 
 Route::prefix('blogs')->group(function(){
     Route::get('/', [BlogController::class, 'viewList'])->name('blogs');
-    Route::get('/{title}', [BlogController::class, 'viewDetails'])->name('blog');
+    Route::get('/{id}/{title}', [BlogController::class, 'viewDetails'])->name('blog');
 });

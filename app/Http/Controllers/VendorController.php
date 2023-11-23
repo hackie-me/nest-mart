@@ -12,14 +12,15 @@ class VendorController extends Controller
     public function viewList()
     {
         $vendors = VendorDetails::paginate(10);
-        $data = compact('vendors');
+        $totalVendors = VendorDetails::count();
+        $data = compact('vendors', 'totalVendors');
         return view('pages.vendor-list')->with($data);
     }
 
     // Function to view the details of a vendor
-    public function viewDetails($title)
+    public function viewDetails($id, $title)
     {
-        $vendor = VendorDetails::where('name', $title)->first();
+        $vendor = VendorDetails::find($id);
         $products = Product::where('vendor_id', $vendor->vendor_id)->paginate(10);
         $data = compact('vendor', 'products');
         return view('pages.vendor-details')->with($data);

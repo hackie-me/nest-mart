@@ -23,10 +23,10 @@ class ProductController extends Controller
     }
 
     // Function to view the details of a product
-    public function viewDetails($title)
+    public function viewDetails($id, $title)
     {
-        $product = Product::where('name', $title)->first();
-        $relatedProducts = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->get();
+        $product = Product::find($id);
+        $relatedProducts = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->take(8)->get();
         $data = [
             'product' => $product,
             'relatedProducts' => $relatedProducts

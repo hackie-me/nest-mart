@@ -82,7 +82,7 @@
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <div class="product-img-inner">
-                                            <a href="{{route('product', [$product->name])}}">
+                                            <a href="{{route('product', [$product->id, $product->name])}}">
                                                 <img class="default-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                                                 <img class="hover-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                                             </a>
@@ -99,7 +99,7 @@
                                     <div class="product-category">
                                         <a href="#">{{$product->category->name}}</a>
                                     </div>
-                                    <h2><a href="{{route('product', [$product->name])}}">{{$product->name}}</a></h2>
+                                    <h2><a href="{{route('product', [$product->id, $product->name])}}">{{$product->name}}</a></h2>
                                     <div class="product-rate-cover">
                                         <div class="product-rate d-inline-block">
                                             <div class="product-rating" style="width: 90%"></div>

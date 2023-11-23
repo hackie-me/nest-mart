@@ -31,7 +31,7 @@
                     <div class="col-12 col-lg-8 mx-auto">
                         <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p>We have <strong class="text-brand">{{$vendors->count()}}</strong> vendors now</p>
+                                <p>We have <strong class="text-brand">{{$totalVendors}}</strong> vendors now</p>
                             </div>
                             <div class="sort-by-product-area">
                                 <div class="sort-by-cover mr-10">
@@ -111,7 +111,7 @@
                                                 <li><img src="{{url('assets/imgs/theme/icons/icon-location.svg')}}" alt="" /><strong>Address: </strong> <span>{{$item->address->address_line_1}}, {{$item->address->city}}, {{$item->address->state}}, {{$item->address->country}} {{$item->address->zip_code}}</span></li>
                                                 <li><img src="{{url('assets/imgs/theme/icons/icon-contact.svg')}}" alt="" /><strong>Call Us:</strong><span>(+91) - {{$item->phone}}</span></li>
                                             </ul>
-                                            <a href="{{route('vendor', [$item->name])}}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+                                            <a href="{{route('vendor', [$item->id, $item->name])}}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
                                         </div>
                                     </div>
                                 </div>

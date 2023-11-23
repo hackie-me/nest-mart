@@ -16,7 +16,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $popularCategories = Category::orderBy('created_at', 'desc')->take(5)->get();
         $shopByCategory = $categories;
-        $popularProducts = Product::orderBy('created_at', 'desc')->take(8)->get();
+        $popularProducts = Product::orderBy('created_at', 'desc')->take(10)->get();
         // Take 3 Random Products
         $topSellingProducts = Product::inRandomOrder()->take(3)->get();
         $trendingProducts = Product::inRandomOrder()->take(3)->get();

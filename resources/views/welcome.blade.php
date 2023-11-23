@@ -47,7 +47,7 @@
                             <div class="tab-pane fade" id="tab-{{ $index }}" role="tabpanel" aria-labelledby="tab-{{ $index }}">
                                 <!--Start product-grid-4 for {{ $category->name }}-->
                                 <div class="row product-grid-4">
-                                    @forelse($category->products as $product)
+                                    @forelse($category->limitedProducts as $product)
                                         <!--Start single-product-->
                                         <x-cards.product-card :product="$product"/>
                                         <!--End single-product-->

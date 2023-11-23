@@ -12,7 +12,7 @@ class BlogController extends Controller
     }
 
     // Function to view Blog Details
-    public function viewDetails(){
+    public function viewDetails($title, $id){
         return view('pages.blog-details');
     }
 }

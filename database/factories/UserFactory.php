@@ -21,15 +21,19 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
+            'name' => $this->faker->name,
+            'username' => $this->faker->unique()->userName,
+            'phone' => $this->faker->unique()->phoneNumber,
+            'email' => $this->faker->unique()->safeEmail,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null,
+            'password' => bcrypt('password'), // You might want to customize this based on your password requirements
+            'profile_photo_url' => null, // Adjust the size as needed
+            'is_admin' => false,
+            'is_vendor' => $this->faker->boolean,
+            'is_user' => true,
             'remember_token' => Str::random(10),
-            'profile_photo_path' => null,
-            'current_team_id' => null,
+            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'updated_at' => now(),
         ];
     }
 

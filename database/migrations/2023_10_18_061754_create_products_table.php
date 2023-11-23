@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->json('gallery');
+            $table->string('image')->nullable();
+            $table->json('gallery')->nullable();
             $table->string('name');
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->float('price');

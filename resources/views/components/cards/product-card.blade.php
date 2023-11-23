@@ -2,7 +2,7 @@
     <div class="product-cart-wrap mb-30">
         <div class="product-img-action-wrap">
             <div class="product-img product-img-zoom">
-                <a href="{{route('product', [$product->name])}}">
+                <a href="{{route('product', [$product->id, $product->name])}}">
                     <img class="default-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                     <img class="hover-img" src="{{url('/')}}/storage/{{$product->image}}" alt="" />
                 </a>
@@ -18,7 +18,7 @@
             <div class="product-category">
                 <a href="#">{{$product->category->name}}</a>
             </div>
-            <h2><a href="{{route('product', [$product->name])}}">{{$product->name}}</a></h2>
+            <h2><a href="{{route('product', [$product->id, $product->name])}}">{{$product->name}}</a></h2>
             <div class="product-rate-cover">
                 <div class="product-rate d-inline-block">
                     <div class="product-rating" style="width: 90%"></div>
@@ -26,7 +26,6 @@
                 <span class="font-small ml-5 text-muted"> (4.0)</span>
             </div>
             <div>
-                <span class="font-small text-muted">By <a href="{{route('vendor', [$product->vendor->name])}}">{{$product->vendor->name}}</a></span>
             </div>
             <div class="product-card-bottom">
                 <div class="product-price">

@@ -24,4 +24,9 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    public function limitedProducts(): HasMany
+    {
+        return $this->hasMany(Product::class)->limit(10)->orderBy('created_at', 'desc');
+    }
 }

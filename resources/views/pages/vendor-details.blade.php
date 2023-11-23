@@ -99,7 +99,7 @@
                             <div class="product-category">
                                 @php
                                     // Get the Year from Created_at
-                                    $vendorSince = date('Y', strtotime($vendor->created_at));
+                                    $vendorSince = date('Y', strtotime($vendor->since));
                                 @endphp
                                 <span class="text-muted">Since {{$vendorSince}}</span>
                             </div>
@@ -120,7 +120,7 @@
                                     <li><img class="mr-5" src="{{url('assets/imgs/theme/icons/icon-location.svg')}}" alt="" /><strong>Address: </strong>
                                         <span>{{$vendor->address->address_line_1}}, {{$vendor->address->city}}, {{$vendor->address->state}}, {{$vendor->address->country}} {{$vendor->address->zip_code}}</span>
                                     </li>
-                                    <li><img class="mr-5" src="{{url('assets/imgs/theme/icons/icon-contact.svg')}}" alt="" /><strong>Call Us:</strong><span>(+91) - {{$vendor->phone}}</span></li>
+                                    <li><img class="mr-5" src="{{url('assets/imgs/theme/icons/icon-contact.svg')}}" alt="" /><strong>Call Us:</strong><span>{{$vendor->phone}}</span></li>
                                 </ul>
                                 <a href="#" class="btn btn-xs">Contact Seller <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
