@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Filament\Vendor\Resources;
+namespace App\Filament\Resources;
 
-use App\Filament\Vendor\Resources\VendorDetailsResource\Pages;
-use App\Filament\Vendor\Resources\VendorDetailsResource\RelationManagers;
+use App\Filament\Resources\VendorDetailsResource\Pages;
+use App\Filament\Resources\VendorDetailsResource\RelationManagers;
 use App\Models\VendorDetails;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -16,56 +17,46 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class VendorDetailsResource extends Resource
 {
     protected static ?string $model = VendorDetails::class;
-    protected static ?string $navigationLabel = 'My Shop';
-    protected static ?string $modelLabel = 'Shop';
-
+    protected static ?string $modelLabel = 'Stores';
+    protected static ?string $navigationLabel = 'Vendors';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Hidden::make('vendor_id')
-                    ->default(auth()->user()->id)
-                    ->required(),
+                Forms\Components\Select::make('vendor_id')
+                    ->relationship('vendor', 'name'),
                 Forms\Components\TextInput::make('name')
-                    ->label('Enter your shop Name:')
                     ->required()
                     ->maxLength(191),
                 Forms\Components\TextInput::make('summary')
-                    ->label('Enter your shop summary:')
                     ->required()
                     ->maxLength(191)
                     ->default('N/A'),
                 Forms\Components\TextInput::make('phone')
-                    ->prefix('+91')
                     ->tel()
                     ->required()
                     ->maxLength(191),
                 Forms\Components\TextInput::make('twitter')
-                    ->prefix('@')
                     ->required()
                     ->maxLength(191)
                     ->default('N/A'),
                 Forms\Components\TextInput::make('facebook')
-                    ->prefix('@')
                     ->required()
                     ->maxLength(191)
                     ->default('N/A'),
                 Forms\Components\TextInput::make('instagram')
-                    ->prefix('@')
                     ->required()
                     ->maxLength(191)
                     ->default('N/A'),
                 Forms\Components\TextInput::make('pinterest')
-                    ->prefix('@')
                     ->required()
                     ->maxLength(191)
                     ->default('N/A'),
                 Forms\Components\DatePicker::make('since')
-                    ->default(now())
                     ->required(),
-                Forms\Components\Section::make('Shop Address')
+                Section::make('Shop Address')
                     ->relationship('address')
                     ->schema([
                         Forms\Components\Hidden::make('vendor_id')
@@ -93,6 +84,25 @@ class VendorDetailsResource extends Resource
                         Forms\Components\Hidden::make('address_type')
                             ->default('vendor')
                             ->required()
+                    ])->columns(3),
+                Section::make('User Details')
+                    ->relationship('vendor')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->disabled()
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('username')
+                            ->disabled()
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('phone')
+                            ->disabled()
+                            ->tel()
+                            ->maxLength(191),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->disabled()
+                            ->required()
+                            ->maxLength(191),
                     ])->columns(3)
             ])->columns(3);
     }
@@ -105,8 +115,6 @@ class VendorDetailsResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('summary')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable(),
@@ -126,7 +134,6 @@ class VendorDetailsResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -134,9 +141,6 @@ class VendorDetailsResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->modifyQueryUsing(function (Builder $query) {
-                $query->where('vendor_id', auth()->user()->id);
-            })
             ->emptyStateActions([
                 Tables\Actions\CreateAction::make(),
             ]);
@@ -154,7 +158,6 @@ class VendorDetailsResource extends Resource
         return [
             'index' => Pages\ListVendorDetails::route('/'),
             'create' => Pages\CreateVendorDetails::route('/create'),
-            'view' => Pages\ViewVendorDetails::route('/{record}'),
             'edit' => Pages\EditVendorDetails::route('/{record}/edit'),
         ];
     }
