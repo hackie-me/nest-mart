@@ -415,12 +415,12 @@
         let page = document.createElement("html");
         page.innerHTML = html;
         page.querySelectorAll("a").forEach((a) => a.setAttribute("target", "_top"));
-        let modal = document.getElementById("livewire-error");
+        let modal = document.getElementById("livewire1-error");
         if (typeof modal != "undefined" && modal != null) {
             modal.innerHTML = "";
         } else {
             modal = document.createElement("div");
-            modal.id = "livewire-error";
+            modal.id = "livewire1-error";
             modal.style.position = "fixed";
             modal.style.width = "100vw";
             modal.style.height = "100vh";
@@ -3815,12 +3815,12 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
     }
     function handleFileUpload(el, property, component, cleanup3) {
         let manager = getUploadManager(component);
-        let start3 = () => el.dispatchEvent(new CustomEvent("livewire-upload-start", { bubbles: true, detail: { id: component.id, property } }));
-        let finish = () => el.dispatchEvent(new CustomEvent("livewire-upload-finish", { bubbles: true, detail: { id: component.id, property } }));
-        let error2 = () => el.dispatchEvent(new CustomEvent("livewire-upload-error", { bubbles: true, detail: { id: component.id, property } }));
+        let start3 = () => el.dispatchEvent(new CustomEvent("livewire1-upload-start", { bubbles: true, detail: { id: component.id, property } }));
+        let finish = () => el.dispatchEvent(new CustomEvent("livewire1-upload-finish", { bubbles: true, detail: { id: component.id, property } }));
+        let error2 = () => el.dispatchEvent(new CustomEvent("livewire1-upload-error", { bubbles: true, detail: { id: component.id, property } }));
         let progress = (progressEvent) => {
             var percentCompleted = Math.round(progressEvent.loaded * 100 / progressEvent.total);
-            el.dispatchEvent(new CustomEvent("livewire-upload-progress", {
+            el.dispatchEvent(new CustomEvent("livewire1-upload-progress", {
                 bubbles: true,
                 detail: { progress: percentCompleted }
             }));
@@ -6819,8 +6819,8 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
 
     // js/lifecycle.js
     function start2() {
-        dispatch(document, "livewire:init");
-        dispatch(document, "livewire:initializing");
+        dispatch(document, "livewire1:init");
+        dispatch(document, "livewire1:initializing");
         module_default.plugin(module_default6);
         module_default.plugin(history2);
         module_default.plugin(module_default5);
@@ -6863,7 +6863,7 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         }));
         module_default.start();
         setTimeout(() => window.Livewire.initialRenderIsFinished = true);
-        dispatch(document, "livewire:initialized");
+        dispatch(document, "livewire1:initialized");
     }
     function stop2() {
     }
@@ -7084,10 +7084,10 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
         if (e.detail && e.detail.init)
             return;
         isNavigating = true;
-        document.dispatchEvent(new CustomEvent("livewire:navigated", { bubbles: true }));
+        document.dispatchEvent(new CustomEvent("livewire1:navigated", { bubbles: true }));
     });
     document.addEventListener("alpine:navigating", (e) => {
-        document.dispatchEvent(new CustomEvent("livewire:navigating", { bubbles: true }));
+        document.dispatchEvent(new CustomEvent("livewire1:navigating", { bubbles: true }));
     });
     function shouldRedirectUsingNavigateOr(effects, url, or) {
         let forceNavigate = effects.redirectUsingNavigate;
@@ -7405,17 +7405,17 @@ ${expression ? 'Expression: "' + expression + '"\n\n' : ""}`, el);
                 return true;
             return false;
         };
-        window.addEventListener("livewire-upload-start", (e) => {
+        window.addEventListener("livewire1-upload-start", (e) => {
             if (eventMismatch(e))
                 return;
             startLoading();
         });
-        window.addEventListener("livewire-upload-finish", (e) => {
+        window.addEventListener("livewire1-upload-finish", (e) => {
             if (eventMismatch(e))
                 return;
             endLoading();
         });
-        window.addEventListener("livewire-upload-error", (e) => {
+        window.addEventListener("livewire1-upload-error", (e) => {
             if (eventMismatch(e))
                 return;
             endLoading();
