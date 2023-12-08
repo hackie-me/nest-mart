@@ -20,9 +20,6 @@
                             <li>
                                 <a href="{{route('vendors')}}">Vendors</a>
                             </li>
-                            <li>
-                                <a href="{{route('blogs')}}">Blog</a>
-                            </li>
                         </ul>
                     </nav>
                 </div>

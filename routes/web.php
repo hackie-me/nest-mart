@@ -40,8 +40,3 @@ Route::prefix('vendor')->group(function(){
     Route::get('/', [VendorController::class, 'viewList'])->name('vendors');
     Route::get('/{id}/{title}', [VendorController::class, 'viewDetails'])->name('vendor');
 });
-
-Route::prefix('blogs')->group(function(){
-    Route::get('/', [BlogController::class, 'viewList'])->name('blogs');
-    Route::get('/{id}/{title}', [BlogController::class, 'viewDetails'])->name('blog');
-});

@@ -31,9 +31,6 @@
                         <li class="menu-item-has-children">
                             <a href="#">Vendors</a>
                         </li>
-                        <li class="menu-item-has-children">
-                            <a href="#">Blog</a>
-                        </li>
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
