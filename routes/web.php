@@ -22,10 +22,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('wishlist', [WishListController::class, 'index'])->name('wishlist');
+Route::prefix('wishlist')->group(function(){
+    Route::get('/', [WishListController::class, 'index'])->name('wishlist');
+    Route::get('/add', [WishListController::class, 'addWishlist'])->name('wishlist.add');
+    Route::get('/remove/{id}', [WishListController::class, 'removeWishlist'])->name('wishlist.remove');
+});
+Route::prefix('cart')->group(function(){
+    Route::get('/', [CartController::class, 'index'])->name('cart');
+    Route::get('/add', [CartController::class, 'addToCart'])->name('cart.add');
+    Route::get('/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::get('/remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');
+});
 Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice');
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
-Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::get('about-us', [HomeController::class, 'viewAbout'])->name('about-us');
 Route::get('privacy-policy', [HomeController::class, 'viewPolicy'])->name('privacy-policy');
 Route::get('terms-and-conditions', [HomeController::class, 'viewTerms'])->name('terms-and-conditions');
