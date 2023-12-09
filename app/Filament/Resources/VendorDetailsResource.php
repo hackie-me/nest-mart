@@ -86,6 +86,7 @@ class VendorDetailsResource extends Resource
                             ->required()
                     ])->columns(3),
                 Section::make('User Details')
+                    ->hidden(fn($operation) => $operation == 'create')
                     ->relationship('vendor')
                     ->schema([
                         Forms\Components\TextInput::make('name')
