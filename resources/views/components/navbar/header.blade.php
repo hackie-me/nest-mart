@@ -13,19 +13,27 @@
                 <div class="header-action-right">
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
-                            <a href="{{route('wishlist')}}">
+                            <a href="{{$wishlist}}">
                                 <img class="svgInject" alt="Nest" src="{{url('assets/imgs/theme/icons/icon-heart.svg')}}" />
-                                <span class="pro-count blue">6</span>
+                                @auth
+                                    <span class="pro-count blue">
+                                        {{auth()->user()->wishLists()->count()}}
+                                    </span>
+                                @endauth
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="{{route('cart')}}">
+                            <a class="mini-cart-icon" href="{{$cart}}">
                                 <img alt="Nest" src="{{url('assets/imgs/theme/icons/icon-cart.svg')}}" />
-                                <span class="pro-count blue">2</span>
+                                @auth
+                                    <span class="pro-count blue">
+                                        {{auth()->user()->carts()->count()}}
+                                    </span>
+                                @endauth
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a href="{{url('/user')}}">
+                            <a href="{{route('login')}}">
                                 <img class="svgInject" alt="Nest" src="{{url('assets/imgs/theme/icons/icon-user.svg')}}" />
                             </a>
                         </div>

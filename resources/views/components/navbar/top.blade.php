@@ -5,8 +5,7 @@
                 <div class="header-info">
                     <ul>
                         <li><a href="{{route('about-us')}}">About Us</a></li>
-                        <li><a href="{{url('/user')}}">My Account</a></li>
-                        <li><a href="{{route('wishlist')}}">Wishlist</a></li>
+                        <li><a href="{{route('login')}}">My Account</a></li>
                     </ul>
                 </div>
             </div>

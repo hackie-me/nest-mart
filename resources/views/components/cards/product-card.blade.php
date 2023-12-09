@@ -8,7 +8,15 @@
                 </a>
             </div>
             <div class="product-action-1">
-                <a aria-label="Add To Wishlist" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
+                    @auth
+                        <a aria-label="Add To Wishlist" class="action-btn @if($product->hasWishList(auth()->user()->id)) bg-blue-900 @endif" href="{{route('wishlist.add', ['product_id' => $product->id])}}">
+                            <i class="fi-rs-heart"></i>
+                        </a>
+                    @else
+                        <a aria-label="Add To Wishlist" class="action-btn" href="{{route('login')}}">
+                            <i class="fi-rs-heart"></i>
+                        </a>
+                    @endauth
             </div>
             <div class="product-badges product-badges-position product-badges-mrg">
                 <span class="hot">Hot</span>
@@ -33,7 +41,11 @@
                     <span class="old-price">${{ $product->price + rand(0, 100) * ($product->price) / 100 }}</span>
                 </div>
                 <div class="add-cart">
-                    <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                    @auth
+                        <a class="add" href="{{route('cart.add', ['product_id' => $product->id])}}"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                    @else
+                        <a class="add" href="{{route('login')}}"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                    @endauth
                 </div>
             </div>
         </div>

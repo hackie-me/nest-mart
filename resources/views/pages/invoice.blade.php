@@ -3,7 +3,7 @@
 @section('content')
     <div class="invoice invoice-content invoice-4">
         <div class="back-top-home hover-up mt-30 ml-30">
-            <a class="hover-up" href="index.html"><i class="fi-rs-home mr-5"></i> Homepage</a>
+            <a class="hover-up" href="{{route('home')}}"><i class="fi-rs-home mr-5"></i> Homepage</a>
         </div>
         <div class="container">
             <div class="row">
@@ -14,23 +14,30 @@
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="logo">
-                                            <a href="index.html"><img src="assets/imgs/theme/logo.svg" alt="logo" /></a>
+                                            <a href="{{route('home')}}">
+                                                <img src="{{asset('assets/imgs/theme/logo.svg')}}" alt="logo"/>
+                                            </a>
                                         </div>
                                         <p class="invoice-addr-1 mt-10">
-                                            <strong>Invoice Numb:</strong> <strong class="text-brand">#985632</strong> <br />
-                                            <strong>Invoice Data:</strong> Aug 27, 2022 <br />
-                                            <strong>Due Data:</strong> Aug 27, 2022
+                                            <strong>Invoice Numb:</strong> <strong class="text-brand">#{{$id}}</strong>
+                                            <br/>
+                                            <strong>Invoice Date:</strong> {{$invDate}}
+                                            <br/>
+                                            <strong>Due Date:</strong> {{$invDueDate}}
                                         </p>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="invoice-number">
                                             <h4 class="invoice-title-1 mb-10">Invoice To</h4>
                                             <p class="invoice-addr-1">
-                                                <strong class="text-brand">NestMart Inc</strong> <br />
-                                                205 North Michigan Avenue, Suite 810<br />
-                                                Chicago, 60601, USA<br />
-                                                <abbr title="Phone">Phone:</abbr> (+123) 456-7890<br />
-                                                <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="63000c0d17020017230d0610170e0211174d000c0e">[email&#160;protected]</a><br />
+                                                <strong class="text-brand"></strong> {{$vendorDetails->name}} <br/>
+                                                {{$vendorDetails->address->address_line_1}}<br/>
+                                                {{$vendorDetails->address->city }}, {{$vendorDetails->address->country}}
+                                                , {{$vendorDetails->address->zip_code}}
+                                                <br/>
+                                                <abbr title="Phone">Phone:</abbr> {{$vendorDetails->phone}}<br/>
+                                                <abbr title="Email">Email: </abbr>
+                                                <a href="mailto:{{$vendor->email}}">{{$vendor->email}} </a><br/>
                                             </p>
                                         </div>
                                     </div>
@@ -38,11 +45,13 @@
                                         <div class="invoice-number">
                                             <h4 class="invoice-title-1 mb-10">Bill To</h4>
                                             <p class="invoice-addr-1">
-                                                <strong class="text-brand">Webz Poland</strong> <br />
-                                                Madalinskiego 8<br />
-                                                71-101 Szczecin, Poland<br />
-                                                <abbr title="Phone">Phone:</abbr> +48 444 666 3333<br />
-                                                <abbr title="Email">Email: </abbr><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="523c343d12253730287c313d3f7c223e">[email&#160;protected]</a><br />
+                                                <strong class="text-brand">{{$invoice->first_name . ' ' . $invoice->first_name }}</strong>
+                                                <br/>
+                                                {{$invoice->address_line_1}}<br/>
+                                                {{$invoice->city }}, {{$invoice->country}}, {{$invoice->zip_code}}<br/>
+                                                <abbr title="Phone">Phone:</abbr> {{$invoice->phone}}<br/>
+                                                <abbr title="Email">Email: </abbr>
+                                                <a href="mailto:{{$invoice->email}}">{{$invoice->email}} </a><br/>
                                             </p>
                                         </div>
                                     </div>
@@ -60,93 +69,115 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="item-desc-1">
-                                                    <span>Field Roast Chao Cheese Creamy Original</span>
-                                                    <small>SKU: FWM15VKT</small>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">$10.99</td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-right">$10.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="item-desc-1">
-                                                    <span>Blue Diamond Almonds Lightly Salted</span>
-                                                    <small>SKU: FWM15VKT</small>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">$20.00</td>
-                                            <td class="text-center">3</td>
-                                            <td class="text-right">$60.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="item-desc-1">
-                                                    <span>Fresh Organic Mustard Leaves Bell Pepper</span>
-                                                    <small>SKU: KVM15VK</small>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">$640.00</td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-right">$640.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="item-desc-1">
-                                                    <span>All Natural Italian-Style Chicken Meatballs</span>
-                                                    <small>SKU: 98HFG</small>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">$240.00</td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-right">$240.00</td>
-                                        </tr>
+                                        @foreach($carts as $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="item-desc-1">
+                                                        <span>{{$item->product->name}}</span>
+                                                        <small>SKU: {{$item->product->sku}}</small>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">${{$item->product->price}}</td>
+                                                <td class="text-center">{{$item->quantity}}</td>
+                                                <td class="text-right">
+                                                    ${{$item->product->price * $item->quantity}}
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                        <tfoot>
                                         <tr>
                                             <td colspan="3" class="text-end f-w-600">SubTotal</td>
-                                            <td class="text-right">$1710.99</td>
+                                            <td class="text-right">
+                                                ${{$subTotal}}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-end f-w-600">Tax</td>
-                                            <td class="text-right">$85.99</td>
+                                            <td class="text-right">
+                                                ${{$tax}}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-end f-w-600">Grand Total</td>
-                                            <td class="text-right f-w-600">$1795.99</td>
+                                            <td class="text-right f-w-600">
+                                                ${{$total}}
+                                            </td>
                                         </tr>
-                                        </tbody>
+                                        </tfoot>
                                     </table>
                                 </div>
                             </div>
                             <div class="invoice-bottom pb-80">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h6 class="mb-15">Bank Transfer</h6>
-                                        <p class="font-sm">
-                                            <strong>Account Name:</strong> AliThemes<br />
-                                            <strong>Account Number:</strong> 01256398<br />
-                                            <strong>Swift Code:</strong> BFTV VNVXS
-                                        </p>
+                                        @if($payment_method == "Direct Bank Transfer")
+                                            <h6 class="mb-15">Bank Transfer to</h6>
+                                            <p class="font-sm">
+                                                <strong>Account Name:</strong> Nest Mart<br/>
+                                                <strong>Account Number:</strong> 94730100001498<br/>
+                                                <strong>Swift Code:</strong> BARB0IND11
+                                            </p>
+                                        @elseif($payment_method == "Online Gateway")
+                                            <h6 class="mb-15">Payment Method</h6>
+                                            <p class="font-sm">
+                                                <strong>Payment Method:</strong> Online Gateway<br/>
+                                                <strong>Payment Status:</strong> {{$payment_status}}<br/>
+                                            </p>
+                                        @else
+                                            <h6 class="mb-15">Payment Method</h6>
+                                            <p class="font-sm">
+                                                <strong>Payment Method:</strong> Cash on Delivery<br/>
+                                                <strong>Payment Status:</strong> {{$payment_status}}<br/>
+                                            </p>
+                                        @endif
                                     </div>
                                     <div class="col-md-6 text-end">
                                         <h6 class="mb-15">Total Amount</h6>
-                                        <h3 class="mt-0 mb-0 text-brand">$1795.99</h3>
+                                        <h3 class="mt-0 mb-0 text-brand">${{$total}}</h3>
                                         <p class="mb-0 text-muted">Taxes Included</p>
                                     </div>
                                 </div>
                                 <div class="row text-center">
                                     <div class="hr mt-30 mb-30"></div>
                                     <p class="mb-0">
-                                        <strong>Note:</strong>This is computer generated receipt and does not require physical signature.
+                                        <strong>Note:</strong>This is computer generated receipt and does not require
+                                        physical signature.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <div class="invoice-btn-section clearfix d-print-none">
-                            <a href="javascript:window.print()" class="btn btn-lg btn-custom btn-print hover-up"> <img src="assets/imgs/theme/icons/icon-print.svg" alt="" /> Print </a>
-                            <a id="invoice_download_btn" class="btn btn-lg btn-custom btn-download hover-up"> <img src="assets/imgs/theme/icons/icon-download.svg" alt="" /> Download </a>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="invoice-btn-group">
+                                        <a href="javascript:printData()" class="btn btn-primary btn-icon"><i
+                                                    class="fi-rs-printer"></i> Print</a>
+                                        <a href="javascript:printData()" class="btn btn-primary btn-icon"><i
+                                                    class="fi-rs-download"></i> Download</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                // Print Function to print invoice container with Id: invoice_wrapper
+                                function printData() {
+                                    let divToPrint = document.getElementById("invoice_wrapper");
+                                    let stylesheets = getStylesheets();
+                                    let styles = stylesheets.map(url => `<link rel='stylesheet' type='text/css' href='${url}'>`).join('');
+                                    let newWin = window.open("");
+                                    newWin.document.write(styles + divToPrint.outerHTML);
+                                    newWin.print();
+                                    newWin.close();
+                                }
+
+                                function getStylesheets() {
+                                    // Replace these with the actual paths to your stylesheets
+                                    return [
+                                        "{{asset("assets/css/plugins/slider-range.css")}}",
+                                        "{{asset("assets/css/main.css")}}"
+                                    ];
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>

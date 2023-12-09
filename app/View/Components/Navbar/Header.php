@@ -21,6 +21,13 @@ class Header extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navbar.header');
+        $wishlist = route('wishlist');
+        $cart = route('cart');
+        if (!auth()->check()) {
+            $wishlist = route('login');
+            $cart = route('login');
+        }
+        $data = compact('wishlist', 'cart');
+        return view('components.navbar.header')->with($data);
     }
 }

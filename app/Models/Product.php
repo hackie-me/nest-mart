@@ -46,12 +46,7 @@ class Product extends Model
 
     public function vendor() : BelongsTo
     {
-        return $this->belongsTo(VendorDetails::class, 'vendor_id', 'vendor_id');
-    }
-
-    public function sizeWeights() : HasMany
-    {
-        return $this->hasMany(SizeWeight::class);
+        return $this->belongsTo(VendorDetails::class, 'vendor_id', 'id');
     }
 
     public function additionalProductInfos() : HasOne
@@ -61,11 +56,16 @@ class Product extends Model
 
     public function wishLists() : HasMany
     {
-        return $this->hasMany(WishList::class);
+        return $this->hasMany(WishList::class, 'product_id', 'id');
     }
 
     public function carts() : HasMany
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function hasWishList($user_id) : bool
+    {
+        return $this->wishLists()->where('user_id', $user_id)->exists();
     }
 }

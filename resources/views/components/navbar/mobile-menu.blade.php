@@ -2,7 +2,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="#"><img src="{{url('assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
+                <a href="{{url('/')}}"><img src="{{url('assets/imgs/theme/logo.svg')}}" alt="logo" /></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -23,13 +23,13 @@
                 <nav>
                     <ul class="mobile-menu font-heading">
                         <li class="menu-item-has-children">
-                            <a href="#">Home</a>
+                            <a href="{{url('/')}}">Home</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">shop</a>
+                            <a href="{{route('products')}}">shop</a>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="#">Vendors</a>
+                            <a href="{{route('vendors')}}">Vendors</a>
                         </li>
                     </ul>
                 </nav>
@@ -37,7 +37,7 @@
             </div>
             <div class="mobile-header-info-wrap">
                 <div class="single-mobile-header-info">
-                    <a href="#"><i class="fi-rs-user"></i>Log In / Sign Up </a>
+                    <a href="{{route('login')}}"><i class="fi-rs-user"></i>Log In / Sign Up </a>
                 </div>
                 <div class="single-mobile-header-info">
                     <a href="#"><i class="fi-rs-headphones"></i>(+01) - 2345 - 6789 </a>

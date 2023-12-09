@@ -15,6 +15,7 @@ class Cart extends Model
         'user_id',
         'product_id',
         'quantity',
+        'is_checkout',
     ];
 
     public function product(): BelongsTo
@@ -24,7 +25,7 @@ class Cart extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

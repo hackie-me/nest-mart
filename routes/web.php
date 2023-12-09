@@ -20,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('test', function (){
+    $data = auth()->user()->wishlists;
+   return response()->json($data);
+});
+Route::redirect('login', 'panel/user')->name('login');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('wishlist')->group(function(){
     Route::get('/', [WishListController::class, 'index'])->name('wishlist');
@@ -32,9 +36,15 @@ Route::prefix('cart')->group(function(){
     Route::get('/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/update/{id}', [CartController::class, 'updateCart'])->name('cart.update');
     Route::get('/remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');
+    // clear cart
+    Route::get('/clear', function (){
+        auth()->user()->carts()->delete();
+        return redirect()->back();
+    })->name('cart.clear');
 });
-Route::get('invoice', [InvoiceController::class, 'index'])->name('invoice');
+Route::get('invoice/{id}', [InvoiceController::class, 'index'])->name('invoice');
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 Route::get('about-us', [HomeController::class, 'viewAbout'])->name('about-us');
 Route::get('privacy-policy', [HomeController::class, 'viewPolicy'])->name('privacy-policy');
 Route::get('terms-and-conditions', [HomeController::class, 'viewTerms'])->name('terms-and-conditions');
