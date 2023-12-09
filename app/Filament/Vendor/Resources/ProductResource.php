@@ -94,7 +94,7 @@ class ProductResource extends Resource
                             })
                             ->required(),
                     ])->columns(4),
-                Forms\Components\MarkdownEditor::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->required()
                     ->columnSpanFull(),
                 Forms\Components\Section::make('Additional Details')
